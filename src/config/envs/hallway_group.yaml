@@ -1,0 +1,19 @@
+env: hallway_group
+
+env_args:
+  key: "default"
+  n_agents: 5
+  n_groups: 2
+  state_numbers: [3,5,4,6,10]
+  group_ids: [0,0,1,1,1]
+  reward_win: 1
+  obs_last_action: False
+  state_last_action: False
+
+learner_log_interval: 100000
+log_interval: 100000
+runner_log_interval: 100000
+t_max: 2050000
+test_interval: 10000
+test_nepisode: 100
+test_greedy: True

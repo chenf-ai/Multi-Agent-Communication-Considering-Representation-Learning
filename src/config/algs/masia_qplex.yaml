@@ -1,0 +1,109 @@
+# --- MSRA specific parameters ---
+
+# use epsilon greedy action selector
+action_selector: "epsilon_greedy"
+epsilon_start: 1.0
+epsilon_finish: 0.05
+epsilon_anneal_time: 50000
+evaluation_epsilon: 0.0
+
+runner: "episode"
+# runner: "parallel"
+# batch_size_run: 8
+
+buffer_size: 5000
+
+# update the target network every {} episodes
+target_update_interval_or_tau: 200
+
+
+obs_agent_id: True
+obs_last_action: False
+obs_individual_obs: False
+
+# use the Q_Learner to train
+standardise_returns: False
+standardise_rewards: True
+
+# Focus on: mac, agent, learner, mixer, use_rnn
+mac: "masia_mac"
+agent: "masia"
+agent_output_type: "q"
+learner: "masia_qplex_learner"
+double_q: True
+mixer: "dmaq_qatten"
+use_rnn: True
+mixing_embed_dim: 32
+hypernet_embed: 64
+adv_hypernet_layers: 1
+adv_hypernet_embed: 64
+
+# ===== configs for qplex =====
+
+num_kernel: 4
+is_minus_one: True
+is_adv_attention: True
+is_stop_gradient: True
+weighted_head: True  # weighted head Q-values, for MMM2 and 3s5z_vs_3s6z, it is True
+
+# dmaq_qattn settings
+n_head: 4  # attention head number
+attend_reg_coef: 0.001  # attention regulation coefficient  # For MMM2 and 3s5z_vs_3s6z, it is 0.001
+state_bias: True  # the constant value c(s) in the paper
+mask_dead: False
+nonlinear: True  # non-linearity, for MMM2, it is True
+
+latent_dim: 8
+attention_dim: 32
+nn_hidden_size: 64
+mi_loss_weight: 0.001
+entropy_loss_weight: 0.01
+msg_l1_reg_loss_weight: 0.0001
+var_floor: 0.002
+log_weights: True
+
+# ===== ===== ===== =====
+
+# config for state encoder
+encoder_use_rnn: True
+encoder_hidden_dim: 32
+ae_enc_hidden_dims: []
+ae_dec_hidden_dims: []
+
+attn_embed_dim: 16
+
+concat_obs: True
+
+state_repre_dim: 8
+action_embed_dim: 8
+
+state_encoder: ob_attn_ae
+
+ob_embed_dim: 32
+
+# configs about whether to use latent model learning
+use_latent_model: True
+use_rew_pred: True
+use_momentum_encoder: True
+momentum_tau: 1 
+use_residual: True
+pred_len: 2
+latent_model: mlp
+model_hidden_dim: 64
+spr_dim: 32
+
+rl_signal: True
+
+# config for trade-off among different losses
+spr_coef: 1
+rew_pred_coef: 1
+repr_coef: 1
+
+# config about encoder testing/visualization
+test_encoder: False
+
+name: "masia_qplex"
+
+# config for robust communication
+noise_env: False
+noise_type: 0 # 噪声类别分为0、1、2，分别表示发送方添加噪声、接收方全部添加和接收方部分添加 

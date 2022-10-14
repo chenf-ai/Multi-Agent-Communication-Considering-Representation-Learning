@@ -1,0 +1,46 @@
+# --- Full Comm specific parameters ---
+
+# use epsilon greedy action selector
+action_selector: "epsilon_greedy"
+epsilon_start: 1.0
+epsilon_finish: 0.05
+epsilon_anneal_time: 50000
+evaluation_epsilon: 0.0
+
+runner: "episode"
+# runner: "parallel"
+# batch_size_run: 8
+
+buffer_size: 5000
+
+# update the target network every {} episodes
+target_update_interval_or_tau: 200
+
+
+obs_agent_id: True
+obs_last_action: False
+obs_individual_obs: False
+
+
+# use the Q_Learner to train
+standardise_returns: False
+standardise_rewards: True
+
+mac: "basic_mac"
+agent: "full_comm"
+agent_output_type: "q"
+learner: "q_learner"
+double_q: True
+mixer: "qmix"
+use_rnn: True
+mixing_embed_dim: 32
+hypernet_layers: 2
+hypernet_embed: 64
+
+big_net_agent: False
+
+name: "full_comm"
+
+# config for robust communication
+noise_env: False
+noise_type: 0 # 噪声类别分为0、1、2，分别表示发送方添加噪声、接收方全部添加和接收方部分添加 

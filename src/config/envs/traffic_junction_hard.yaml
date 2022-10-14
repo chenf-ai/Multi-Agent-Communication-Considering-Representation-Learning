@@ -1,0 +1,25 @@
+env: traffic_junction
+
+env_args:
+  map_name: traffic_junction_hard
+  nagents: 20
+  display: False
+  dim: 18
+  vision: 0
+  add_rate_min: 0.02
+  add_rate_max: 0.05
+  curr_start: 0
+  curr_end: 0
+  difficulty: "hard"
+  vocab_type: "bool"
+  time_limit: 80
+
+learner_log_interval: 10000
+log_interval: 10000
+runner_log_interval: 10000
+t_max: 4050000
+test_interval: 20000
+test_nepisode: 32
+
+# use_tensorboard: False # Log results to tensorboard
+# save_model: False # Save the models to disk

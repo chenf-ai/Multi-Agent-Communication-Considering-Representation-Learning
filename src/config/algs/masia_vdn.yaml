@@ -1,0 +1,81 @@
+# --- MSRA specific parameters ---
+
+# use epsilon greedy action selector
+action_selector: "epsilon_greedy"
+epsilon_start: 1.0
+epsilon_finish: 0.05
+epsilon_anneal_time: 50000
+evaluation_epsilon: 0.0
+
+runner: "episode"
+# runner: "parallel"
+# batch_size_run: 8
+
+buffer_size: 5000
+
+# update the target network every {} episodes
+target_update_interval_or_tau: 200
+
+
+obs_agent_id: True
+obs_last_action: False
+obs_individual_obs: False
+
+# use the Q_Learner to train
+standardise_returns: False
+standardise_rewards: True
+
+# Focus on: mac, agent, learner, mixer, use_rnn
+mac: "masia_mac"
+agent: "masia"
+agent_output_type: "q"
+learner: "masia_learner"
+double_q: True
+mixer: "vdn"
+use_rnn: True
+mixing_embed_dim: 32
+hypernet_layers: 2
+hypernet_embed: 64
+
+# config for state encoder
+encoder_use_rnn: True
+encoder_hidden_dim: 32
+ae_enc_hidden_dims: []
+ae_dec_hidden_dims: []
+
+attn_embed_dim: 16
+
+concat_obs: True
+
+state_repre_dim: 8
+action_embed_dim: 8
+
+state_encoder: ob_attn_ae
+
+ob_embed_dim: 32
+
+# configs about whether to use latent model learning
+use_latent_model: True
+use_rew_pred: True
+use_momentum_encoder: True
+use_residual: True
+pred_len: 2
+latent_model: mlp
+model_hidden_dim: 64
+spr_dim: 32
+
+rl_signal: True
+
+# config for trade-off among different losses
+spr_coef: 1
+rew_pred_coef: 1
+repr_coef: 1
+
+# config about encoder testing/visualization
+test_encoder: False
+
+name: "masia_vdn"
+
+# config for robust communication
+noise_env: False
+noise_type: 0 # 噪声类别分为0、1、2，分别表示发送方添加噪声、接收方全部添加和接收方部分添加 

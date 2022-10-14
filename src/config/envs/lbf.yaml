@@ -1,0 +1,23 @@
+env: "lbf"
+
+env_args:
+  key: Foraging-8x8-2p-3f-s2  #这一行已经没用了,会根据下面的自动生成key
+  players: 2
+  max_player_level: 2
+  field_size: 8
+  max_food: 3
+  sight: 2
+  max_episode_steps: 25
+  force_coop: True
+  normalize_reward: True
+  grid_observation: True
+  pretrained_wrapper: null
+
+
+test_greedy: True
+test_nepisode: 100
+test_interval: 50000
+log_interval: 50000
+runner_log_interval: 10000
+learner_log_interval: 10000
+t_max: 2050000

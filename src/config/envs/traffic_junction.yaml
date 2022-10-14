@@ -1,0 +1,22 @@
+env: traffic_junction
+
+env_args:
+  map_name: traffic_junction_medium
+  nagents: 10
+  display: False
+  dim: 14
+  vision: 0
+  add_rate_min: 0.05
+  add_rate_max: 0.2
+  curr_start: 0
+  curr_end: 0
+  difficulty: "medium"
+  vocab_type: "bool"
+  time_limit: 40
+
+learner_log_interval: 10000
+log_interval: 10000
+runner_log_interval: 10000
+t_max: 4050000
+test_interval: 10000
+test_nepisode: 40
