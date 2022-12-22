@@ -253,8 +253,8 @@ class MASIAAgent(nn.Module):
                 update_sd = {k: tau * state_dict[k] + (1 - tau) * v
                     for k, v in model.state_dict().items()}
                 model.load_state_dict(update_sd)
-        update_state_dict(self.target_encoder, self.encoder, self.args.momentum_tau)
-        update_state_dict(self.target_projection, self.projection, self.args.momentum_tau)
+        update_state_dict(self.target_encoder, self.encoder.state_dict(), self.args.momentum_tau)
+        update_state_dict(self.target_projection, self.projection.state_dict(), self.args.momentum_tau)
 
     def enc_parameters(self):
         assert 0, "Shouldn't be called in current version of code."

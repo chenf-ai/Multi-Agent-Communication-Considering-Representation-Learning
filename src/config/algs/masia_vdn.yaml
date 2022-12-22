@@ -54,6 +54,8 @@ state_encoder: ob_attn_ae
 
 ob_embed_dim: 32
 
+momentum_tau: 1
+
 # configs about whether to use latent model learning
 use_latent_model: True
 use_rew_pred: True
